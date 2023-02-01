@@ -20,6 +20,8 @@ import com.moutamid.hbdresidentsadmin.databinding.ActivityComplaintBinding;
 import com.moutamid.hbdresidentsadmin.models.ComplaintModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ComplaintActivity extends AppCompatActivity {
     ActivityComplaintBinding binding;
@@ -59,6 +61,8 @@ public class ComplaintActivity extends AppCompatActivity {
                                 }
                             }
                         }
+                        Collections.sort(list, Comparator.comparing(ComplaintModel::getTimestamp));
+                        Collections.reverse(list);
                         adapter = new ComplaintAdapter(ComplaintActivity.this, list);
                         binding.recycler.setAdapter(adapter);
                         progressDialog.dismiss();

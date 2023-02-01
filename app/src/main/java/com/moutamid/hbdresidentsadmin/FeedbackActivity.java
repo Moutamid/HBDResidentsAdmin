@@ -19,6 +19,8 @@ import com.moutamid.hbdresidentsadmin.databinding.ActivityFeedbackBinding;
 import com.moutamid.hbdresidentsadmin.models.ComplaintModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class FeedbackActivity extends AppCompatActivity {
     ActivityFeedbackBinding binding;
@@ -58,6 +60,8 @@ public class FeedbackActivity extends AppCompatActivity {
                                 }
                             }
                         }
+                        Collections.sort(list, Comparator.comparing(ComplaintModel::getTimestamp));
+                        Collections.reverse(list);
                         adapter = new ComplaintAdapter(FeedbackActivity.this, list);
                         binding.recycler.setAdapter(adapter);
                         progressDialog.dismiss();

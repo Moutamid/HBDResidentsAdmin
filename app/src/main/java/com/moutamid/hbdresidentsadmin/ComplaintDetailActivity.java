@@ -32,6 +32,7 @@ public class ComplaintDetailActivity extends AppCompatActivity {
     ActivityComplaintDetailBinding binding;
     String ID, userID, status, image, title, desc;
     long date;
+    boolean urgent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +49,22 @@ public class ComplaintDetailActivity extends AppCompatActivity {
         image = getIntent().getStringExtra("image");
         title = getIntent().getStringExtra("title");
         desc = getIntent().getStringExtra("desc");
+        urgent = getIntent().getBooleanExtra("urgent", false);
         date = getIntent().getLongExtra("date", 0);
 
         binding.image.setOnClickListener(v -> showDialog());
         binding.title.setText(title);
         binding.desc.setText(desc);
+
+        if (urgent){
+            binding.urgentTitle.setText("Urgent");
+            binding.urgentTitle.setTextColor(getResources().getColor(R.color.white));
+            binding.urgent.setCardBackgroundColor(getResources().getColor(R.color.red));
+        } else {
+            binding.urgentTitle.setText("Not Urgent");
+            binding.urgentTitle.setTextColor(getResources().getColor(R.color.white));
+            binding.urgent.setCardBackgroundColor(getResources().getColor(R.color.primary));
+        }
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm aa");

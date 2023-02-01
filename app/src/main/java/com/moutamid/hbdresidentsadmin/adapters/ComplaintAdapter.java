@@ -78,6 +78,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.Comp
                 i.putExtra("date", model.getTimestamp());
                 i.putExtra("image", model.getImage());
                 i.putExtra("status", model.getStatus());
+                i.putExtra("urgent", model.isUrgent());
                 context.startActivity(i);
             } else {
                 Intent i = new Intent(context, FeedbackDetailActivity.class);

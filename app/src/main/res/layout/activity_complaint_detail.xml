@@ -13,7 +13,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/primary"
         app:title="Complaint"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -168,6 +168,45 @@
                         android:gravity="center"
                         android:padding="12sp"
                         android:text="In-Progress"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Urgent Status : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/urgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="26dp"
+                    app:cardElevation="0dp"
+                    android:layout_centerHorizontal="true"
+                    app:cardBackgroundColor="@color/red">
+
+                    <TextView
+                        android:id="@+id/urgentTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="12sp"
+                        android:text="Urgent"
                         android:textStyle="bold"
                         android:fontFamily="@font/poppins"
                         android:textColor="@color/white" />
