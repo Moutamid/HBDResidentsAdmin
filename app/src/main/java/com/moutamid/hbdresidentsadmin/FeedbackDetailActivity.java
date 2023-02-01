@@ -2,9 +2,20 @@ package com.moutamid.hbdresidentsadmin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.moutamid.hbdresidentsadmin.databinding.ActivityFeedbackDetailBinding;
 import com.moutamid.hbdresidentsadmin.models.UserModel;
 
@@ -45,5 +56,38 @@ public class FeedbackDetailActivity extends AppCompatActivity {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         });
 
+        binding.image.setOnClickListener(v -> showDialog());
+
     }
+
+    private void showDialog() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.show_image_dialog);
+
+        Button close = dialog.findViewById(R.id.close);
+        ImageView imageView = (ImageView) dialog.findViewById(R.id.preview_image);
+        TextView nothing = dialog.findViewById(R.id.nothing);
+
+        if (image.isEmpty()){
+            nothing.setVisibility(View.VISIBLE);
+            imageView.setVisibility(View.GONE);
+        } else {
+            nothing.setVisibility(View.GONE);
+            imageView.setVisibility(View.VISIBLE);
+        }
+
+        Glide.with(FeedbackDetailActivity.this).load(image).into(imageView);
+
+        close.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setGravity(Gravity.CENTER);
+    }
+
 }

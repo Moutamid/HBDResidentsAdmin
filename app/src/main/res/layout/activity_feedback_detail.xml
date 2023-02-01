@@ -137,6 +137,48 @@
 
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/proof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Image Proof : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="26dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginStart="12sp"
+                    android:layout_marginEnd="12sp"
+                    android:layout_toRightOf="@id/proof"
+                    android:layout_centerHorizontal="true"
+                    app:cardBackgroundColor="@color/light">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="12sp"
+                        android:text="Click to preview Image"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/dark" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
         </LinearLayout>
 
     </ScrollView>
