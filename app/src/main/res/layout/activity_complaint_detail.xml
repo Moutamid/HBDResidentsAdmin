@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ComplaintDetailActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:title="Complaint"
+        app:titleTextColor="@color/white"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subject : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Subject : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Suleman"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date/Time : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="22/02/2022, 05:14 AM"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:padding="12sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="26dp"
+                    app:cardElevation="0dp"
+                    android:layout_centerHorizontal="true"
+                    app:cardBackgroundColor="@color/yellow">
+
+                    <TextView
+                        android:id="@+id/statusTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="12sp"
+                        android:text="In-Progress"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/white" />
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12sp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/proof"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Image Proof : "
+                    android:fontFamily="@font/poppins"
+                    android:textSize="16sp"
+                    android:padding="12sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="26dp"
+                    app:cardElevation="0dp"
+                    android:layout_marginStart="12sp"
+                    android:layout_marginEnd="12sp"
+                    android:layout_toRightOf="@id/proof"
+                    android:layout_centerHorizontal="true"
+                    app:cardBackgroundColor="@color/light">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="12sp"
+                        android:text="Click to preview Image"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins"
+                        android:textColor="@color/dark" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25sp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/inProgress"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12sp"
+                    android:backgroundTint="@color/dark"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    android:text="In-Progress" />
+
+                <Button
+                    android:id="@+id/complete"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12sp"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/poppins"
+                    android:layout_weight="1"
+                    android:text="Complete" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
