@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.chat.setOnClickListener(view -> {
-            startActivity(new Intent(this, ChatActivity.class));
+            startActivity(new Intent(this, UrgentActivity.class));
         });
 
         binding.feedback.setOnClickListener(view -> {
