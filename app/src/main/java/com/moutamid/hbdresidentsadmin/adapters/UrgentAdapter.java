@@ -1,5 +1,6 @@
 package com.moutamid.hbdresidentsadmin.adapters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,11 +23,14 @@ import com.moutamid.hbdresidentsadmin.models.ComplaintModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class UrgentAdapter extends RecyclerView.Adapter<UrgentAdapter.ComplaintVH> {
     Context context;
     ArrayList<ComplaintModel> list;
+    ProgressDialog progressDialog;
 
     public UrgentAdapter(Context context, ArrayList<ComplaintModel> list) {
         this.context = context;
@@ -45,6 +50,11 @@ public class UrgentAdapter extends RecyclerView.Adapter<UrgentAdapter.ComplaintV
 
         holder.title.setText(model.getTitle());
         holder.desc.setText(model.getDescription());
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Notifying the User");
+        progressDialog.setTitle("Please Wait");
 
         if (model.getStatus().equals("PEN")) {
             holder.status.setText("Pending");
@@ -69,10 +79,20 @@ public class UrgentAdapter extends RecyclerView.Adapter<UrgentAdapter.ComplaintV
         holder.date.setText(date + ", " + time.toUpperCase(Locale.ROOT));
 
         holder.checked.setOnClickListener(v -> {
-            Intent i = new Intent(context, ChatActivity.class);
-            i.putExtra("ID", model.getId());
-            i.putExtra("userID", model.getUserID());
-            context.startActivity(i);
+            progressDialog.show();
+            Map<String, Object> map = new HashMap<>();
+            map.put("pending", true);
+            Constants.databaseReference().child("pending").child(model.getUserID())
+                    .child(model.getId()).setValue(map).addOnSuccessListener(unused -> {
+                        progressDialog.dismiss();
+                        Intent i = new Intent(context, ChatActivity.class);
+                        i.putExtra("ID", model.getId());
+                        i.putExtra("userID", model.getUserID());
+                        context.startActivity(i);
+                    }).addOnFailureListener(e -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         });
 
         holder.cancel.setOnClickListener(v -> {
